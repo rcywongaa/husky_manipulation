@@ -1,14 +1,11 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(husky_ur_description)
 
-find_package(catkin REQUIRED)
-
-catkin_package()
-
-include_directories()
+find_package(ament_cmake REQUIRED)
+find_package(urdf REQUIRED)
 
 install(DIRECTORY meshes urdf
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 install(PROGRAMS
 scripts/setup_husky_dual_ur3_e_envar
@@ -19,5 +16,9 @@ scripts/setup_husky_ur3_e_envar
 scripts/setup_husky_ur3_envar
 scripts/setup_husky_ur5_e_envar
 scripts/setup_husky_ur5_envar
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  DESTINATION lib/${PROJECT_NAME}
 )
+
+ament_export_dependencies(xacro)
+ament_export_dependencies(urdf)
+ament_package()
