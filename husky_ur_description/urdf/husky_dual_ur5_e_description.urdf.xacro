@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find ur_description)/urdf/inc/ur5e_macro.xacro" />
+  <xacro:arg name="ur_type" default="ur5e"/>
+  <xacro:include filename="$(find ur_description)/urdf/ur.urdf.xacro"/>
 
   <link name="dual_arm_bulkhead_link">
     <visual>
@@ -50,6 +51,6 @@
     <origin xyz="$(optenv HUSKY_RIGHT_UR_XYZ 0 0 0)" rpy="$(optenv HUSKY_RIGHT_UR_RPY 0 0 0)"/>
   </joint>
 
-  <xacro:ur5e_robot prefix="right_ur_arm_" />
-  <xacro:ur5e_robot prefix="left_ur_arm_" />
+  <xacro:ur_robot prefix="right_ur_arm_"/>
+  <xacro:ur_robot prefix="left_ur_arm_"/>
 </robot>
